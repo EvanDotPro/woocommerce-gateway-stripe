@@ -803,11 +803,6 @@ class WC_Stripe_Payment_Request {
 			return false;
 		}
 
-		// Not supported for subscription products when user is not authenticated and account creation is not possible.
-		if ( class_exists( 'WC_Subscriptions_Product' ) && WC_Subscriptions_Product::is_subscription( $product ) && ! is_user_logged_in() && ! $this->is_account_creation_possible() ) {
-			return false;
-		}
-
 		// Trial subscriptions with shipping are not supported.
 		if ( class_exists( 'WC_Subscriptions_Product' ) && $product->needs_shipping() && WC_Subscriptions_Product::get_trial_length( $product ) > 0 ) {
 			return false;
