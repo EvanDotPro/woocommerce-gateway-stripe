@@ -1059,8 +1059,6 @@ class WC_Stripe_Payment_Request {
 			// First empty the cart to prevent wrong calculation.
 			WC()->cart->empty_cart();
 
-			$product_type = $product->get_type();
-
 			if ( ( 'variable' === $product_type || 'variable-subscription' === $product_type ) && isset( $_POST['attributes'] ) ) {
 				$attributes = wc_clean( wp_unslash( $_POST['attributes'] ) );
 
